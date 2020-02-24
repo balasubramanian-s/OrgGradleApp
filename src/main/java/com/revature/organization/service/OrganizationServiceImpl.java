@@ -1,5 +1,9 @@
 package com.revature.organization.service;
 
+
+
+import java.time.Instant;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +34,14 @@ public class OrganizationServiceImpl implements OrganizationService {
 	@Transactional
 	@Override
 	public void save(Organization org) {
-		organizationDAO.save(org);
+		Instant ts = Instant.now();	
+		if(org.getId()==null) {				
+			 org.setCreatedon(ts);
+			}
+		else {
+			org.setModifiedon(ts);
+		}
+		organizationDAO.save(org);		 
 
 	}
 

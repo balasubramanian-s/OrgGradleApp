@@ -1,6 +1,8 @@
 package com.revature.organization.model;
 
-import java.sql.Date;
+
+
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +26,11 @@ public class Organization {
 	@Column
 	private String type;
 	@Column
-	private Date createdon;
+	 private Instant createdon;
+	@Column
+	private Instant modifiedon;
+
+	
 
 	public Integer getId() {
 		return id;
@@ -58,19 +64,29 @@ public class Organization {
 		this.type = type;
 	}
 
-	public Date getCreatedon() {
+	public Instant getCreatedon() {
 		return createdon;
 	}
 
-	public void setCreatedon(Date createdon) {
-		this.createdon = createdon;
+	public void setCreatedon(Instant ts) {
+		this.createdon = ts;
+	}
+
+	public Instant getModifiedon() {
+		return modifiedon;
+	}
+
+	public void setModifiedon(Instant modifiedon) {
+		this.modifiedon = modifiedon;
 	}
 
 	@Override
 	public String toString() {
 		return "Organization [id=" + id + ", name=" + name + ", alias=" + alias + ", type=" + type + ", createdon="
-				+ createdon + "]";
+				+ createdon + ", modifiedon=" + modifiedon + "]";
 	}
+
+	
 
 
 
