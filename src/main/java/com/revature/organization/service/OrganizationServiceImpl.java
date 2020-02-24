@@ -35,7 +35,8 @@ public class OrganizationServiceImpl implements OrganizationService {
 	@Override
 	public void save(Organization org) {
 		Instant ts = Instant.now();	
-		if(org.getId()==null) {				
+		if(org.getId()==null) {		
+			org.setIsActive(true);
 			 org.setCreatedon(ts);
 			}
 		else {
