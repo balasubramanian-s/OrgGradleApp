@@ -12,23 +12,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "organization")
+@Table(name = "organisations")
 public class Organization {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Integer id;
-	@Column
+	@Column(name="`name`")
 	private String name;
-	@Column
+	@Column(name="`alias name`")
 	private String alias;
-	@Column
+	@Column(name="`type`")
 	private String type;
-	@Column
+	@Column(name="`createdon`")
 	 private Instant createdon;
-	@Column
+	@Column(name="`modifiedon`")
 	private Instant modifiedon;
+	@Column(name="`isactive`")
+	private Boolean isActive;
+	@Column(name="`isuserverification`")
+	private Boolean isUserVerification;
+	@Column(name="`issignup`")
+	private Boolean isSignup;
+	
 
 	
 
@@ -80,11 +87,37 @@ public class Organization {
 		this.modifiedon = modifiedon;
 	}
 
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public Boolean getIsUserVerification() {
+		return isUserVerification;
+	}
+
+	public void setIsUserVerification(Boolean isUserVerification) {
+		this.isUserVerification = isUserVerification;
+	}
+
+	public Boolean getIsSignup() {
+		return isSignup;
+	}
+
+	public void setIsSignup(Boolean isSignup) {
+		this.isSignup = isSignup;
+	}
+
 	@Override
 	public String toString() {
 		return "Organization [id=" + id + ", name=" + name + ", alias=" + alias + ", type=" + type + ", createdon="
-				+ createdon + ", modifiedon=" + modifiedon + "]";
+				+ createdon + ", modifiedon=" + modifiedon + ", isActive=" + isActive + ", isUserVerification="
+				+ isUserVerification + ", isSignup=" + isSignup + "]";
 	}
+
 
 	
 
